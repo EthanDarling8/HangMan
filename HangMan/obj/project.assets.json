@@ -693,11 +693,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ethan/Documents/HangMan/HangMan/HangMan.csproj",
+      "projectUniqueName": "/media/ethan/EIN/Classes/2019/Summer/Software Engineering 2450/HangMan/HangMan/HangMan.csproj",
       "projectName": "HangMan",
-      "projectPath": "/home/ethan/Documents/HangMan/HangMan/HangMan.csproj",
+      "projectPath": "/media/ethan/EIN/Classes/2019/Summer/Software Engineering 2450/HangMan/HangMan/HangMan.csproj",
       "packagesPath": "/home/ethan/.nuget/packages/",
-      "outputPath": "/home/ethan/Documents/HangMan/HangMan/obj/",
+      "outputPath": "/media/ethan/EIN/Classes/2019/Summer/Software Engineering 2450/HangMan/HangMan/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ethan/.config/NuGet/NuGet.Config"

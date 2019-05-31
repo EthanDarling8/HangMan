@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/home/ethan/Documents/HangMan/HangMan/HangMan.csproj",
+    "projectUniqueName": "/media/ethan/EIN/Classes/2019/Summer/Software Engineering 2450/HangMan/HangMan/HangMan.csproj",
     "projectName": "HangMan",
-    "projectPath": "/home/ethan/Documents/HangMan/HangMan/HangMan.csproj",
-    "outputPath": "/home/ethan/Documents/HangMan/HangMan/obj/",
+    "projectPath": "/media/ethan/EIN/Classes/2019/Summer/Software Engineering 2450/HangMan/HangMan/HangMan.csproj",
+    "outputPath": "/media/ethan/EIN/Classes/2019/Summer/Software Engineering 2450/HangMan/HangMan/obj/",
     "projectStyle": "PackageReference",
     "originalTargetFrameworks": [
       "netcoreapp2.2"
