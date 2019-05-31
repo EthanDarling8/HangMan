@@ -1,0 +1,11 @@
+/home/ethan/Documents/HangMan/HangMan/bin/Debug/netcoreapp2.2/HangMan.deps.json
+/home/ethan/Documents/HangMan/HangMan/bin/Debug/netcoreapp2.2/HangMan.runtimeconfig.json
+/home/ethan/Documents/HangMan/HangMan/bin/Debug/netcoreapp2.2/HangMan.runtimeconfig.dev.json
+/home/ethan/Documents/HangMan/HangMan/bin/Debug/netcoreapp2.2/HangMan.dll
+/home/ethan/Documents/HangMan/HangMan/bin/Debug/netcoreapp2.2/HangMan.pdb
+/home/ethan/Documents/HangMan/HangMan/obj/Debug/netcoreapp2.2/HangMan.csprojAssemblyReference.cache
+/home/ethan/Documents/HangMan/HangMan/obj/Debug/netcoreapp2.2/HangMan.csproj.CoreCompileInputs.cache
+/home/ethan/Documents/HangMan/HangMan/obj/Debug/netcoreapp2.2/HangMan.AssemblyInfoInputs.cache
+/home/ethan/Documents/HangMan/HangMan/obj/Debug/netcoreapp2.2/HangMan.AssemblyInfo.cs
+/home/ethan/Documents/HangMan/HangMan/obj/Debug/netcoreapp2.2/HangMan.dll
+/home/ethan/Documents/HangMan/HangMan/obj/Debug/netcoreapp2.2/HangMan.pdb
