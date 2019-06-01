@@ -2,14 +2,29 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Threading;
+// ReSharper disable All
 
 namespace HangMan {
     public class Game {
         private static IList<String> words = new List<string>();
         private static Random rand = new Random();
         private static String randomWord;
+        private static int situation;
+
+        public static String GetWord() {
+            return randomWord;
+        }
+
+        public static int GetSituation() {
+            return situation;
+        }
         
+        public static void SetSituation(int s) {
+            situation = s;
+        }
+
         /// <summary>
         /// Displays introduction text and calls Generate method
         /// </summary>
@@ -25,8 +40,13 @@ namespace HangMan {
                 words = Generate();
                 int temp = rand.Next(words.Count);
                 randomWord = words[temp];
-                DrawMan(0);
+                for (int i = 0; i < randomWord.Length; i++) {
+                    Input.PopulateWordList();
+                }
+                DrawMan();
             }
+
+            
         }
 
         private static void DrawBackground() {
@@ -65,28 +85,99 @@ namespace HangMan {
             return wordList;
         }
 
-        public static void DrawMan(int situation) {
+        public static void DrawMan() {
+            //Console.WriteLine(GetWord());
             DrawBackground();
             Console.SetCursorPosition(10, 3);
             Console.WriteLine("Enter a letter to guess.");
             Console.SetCursorPosition(10, 5);
             Console.WriteLine("You have TODO guesses left.\n");
             Console.SetCursorPosition(20, 6);
-            if (situation == 0) {
+            
+            if (GetSituation() == 0) {
                 HangTop();
                 for (int i = 0; i < 8; i++) {
                     Console.CursorLeft = 15;
                     Console.WriteLine("|           ");
                 }
                 HangBase();
+                WordBlanks();
             }
-            else if (situation == 1) {
-                
+            else if (GetSituation() == 1) {
+                HangTop();
+                for (int i = 0; i < 8; i++) {
+                    Console.CursorLeft = 15;
+                    Console.WriteLine("|           ");
+                }
+                HangBase();
+                WordBlanks();
             }
+            else if (GetSituation() == 2) {
+                HangTop();
+                HangHead();
+                for (int i = 0; i < 5; i++) {
+                    Console.CursorLeft = 15;
+                    Console.WriteLine("|           ");
+                }
+                HangBase();
+            }
+            else if (GetSituation() == 3) {
+                HangTop();
+                HangHead();
+                for (int i = 0; i < 5; i++) {
+                    Console.CursorLeft = 15;
+                    Console.WriteLine("|           ");
+                }
+                HangBase();
+            }
+            else if (GetSituation() == 4) {
+                HangTop();
+                HangHead();
+                HangNeck();
+                for (int i = 0; i < 4; i++) {
+                    Console.CursorLeft = 15;
+                    Console.WriteLine("|           ");
+                }
+                HangBase();
+            }
+            else if (GetSituation() == 5) {
+                HangTop();
+                HangHead();
+                HangNeck();
+                for (int i = 0; i < 4; i++) {
+                    Console.CursorLeft = 15;
+                    Console.WriteLine("|           ");
+                }
+                HangBase();
+            }
+            else if (GetSituation() == 6) {
+                HangTop();
+                HangHead();
+                HangNeck();
+                HangLeftArm();
+                for (int i = 0; i < 1; i++) {
+                    Console.CursorLeft = 15;
+                    Console.WriteLine("|           ");
+                }
+                HangBase();
+            }
+            Console.CursorLeft = 15;
+            Input.WordResults();
+            Input.InputCheck();
+        }
 
-            while (true) {
-                Thread.Sleep(100);
-            }
+        private static void HangLeftArm() {
+            Console.CursorLeft = 15;
+            Console.WriteLine("|        /|    ");
+            Console.CursorLeft = 15;
+            Console.WriteLine("|       / |    ");
+            Console.CursorLeft = 15;
+            Console.WriteLine("|      /  |    ");
+        }
+
+        private static void HangNeck() {
+            Console.CursorLeft = 15;
+            Console.WriteLine("|         |    ");
         }
 
         private static void HangTop() {
@@ -98,6 +189,15 @@ namespace HangMan {
             Console.WriteLine("|/         |");
         }
 
+        private static void HangHead() {
+            Console.CursorLeft = 15;
+            Console.WriteLine("|         __");
+            Console.CursorLeft = 15;
+            Console.WriteLine("|        /  \\");
+            Console.CursorLeft = 15;
+            Console.WriteLine("|        \\__/  ");
+        }
+
         private static void HangBase() {
             Console.CursorLeft = 15;
             Console.WriteLine("|\\         ");
@@ -105,6 +205,14 @@ namespace HangMan {
             Console.WriteLine("__|_\\____________");
             Console.CursorLeft = 13;
             Console.WriteLine("- - - - - - - - -");
+        }
+
+        private static void WordBlanks() {
+            Console.CursorLeft = 15;
+            foreach (char c in randomWord) {
+                Console.Write("_ ");
+            }
+            Console.Write(" ");
         }
     }
 }
