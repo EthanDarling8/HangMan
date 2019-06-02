@@ -2,12 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Threading;
-// ReSharper disable All
 
 namespace HangMan {
-    public class Game {
+    public static class Game {
         private static IList<String> words = new List<string>();
         private static Random rand = new Random();
         private static String randomWord;
@@ -28,7 +25,7 @@ namespace HangMan {
         /// <summary>
         /// Displays introduction text and calls Generate method
         /// </summary>
-        public static void Introduction() {
+        public static void Initialize() {
             DrawBackground();
             Console.SetCursorPosition(19, 4);
             Console.WriteLine("Welcome to hangman!");
@@ -43,13 +40,11 @@ namespace HangMan {
                 for (int i = 0; i < randomWord.Length; i++) {
                     Input.PopulateWordList();
                 }
-                DrawMan();
+                DrawBoard();
             }
-
-            
         }
 
-        private static void DrawBackground() {
+        public static void DrawBackground() {
             Console.SetCursorPosition(7, 3);
             Console.BackgroundColor = ConsoleColor.Black;
             for (int i = 0; i < 19; i++) {
@@ -68,7 +63,7 @@ namespace HangMan {
             IList<String> wordList = new List<string>();
             try {
                 using (StreamReader reader = new StreamReader(
-                    Directory.GetCurrentDirectory() + "/words.txt")) {
+                    Directory.GetCurrentDirectory() + "/google-10000-english-no-swears.txt")) {
                     while (!reader.EndOfStream) {
                         string temp = reader.ReadLine();
                         if (temp != null && temp.Length > 2 && temp.Length < 8) {
@@ -85,101 +80,96 @@ namespace HangMan {
             return wordList;
         }
 
-        public static void DrawMan() {
+        public static void DrawBoard() {
             //Console.WriteLine(GetWord());
             DrawBackground();
             Console.SetCursorPosition(10, 3);
             Console.WriteLine("Enter a letter to guess.");
             Console.SetCursorPosition(10, 5);
-            Console.WriteLine("You have TODO guesses left.\n");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~\n");
             Console.SetCursorPosition(20, 6);
-            
+            DrawMan();
+        }
+
+        public static void DrawMan() {
+            Console.CursorTop = 6;
             if (GetSituation() == 0) {
                 HangTop();
                 for (int i = 0; i < 8; i++) {
                     Console.CursorLeft = 15;
                     Console.WriteLine("|           ");
                 }
+
                 HangBase();
                 WordBlanks();
             }
             else if (GetSituation() == 1) {
                 HangTop();
-                for (int i = 0; i < 8; i++) {
+                HangHead();
+                for (int i = 0; i < 5; i++) {
                     Console.CursorLeft = 15;
                     Console.WriteLine("|           ");
                 }
+
                 HangBase();
                 WordBlanks();
             }
             else if (GetSituation() == 2) {
                 HangTop();
                 HangHead();
-                for (int i = 0; i < 5; i++) {
+                HangNeck();
+                for (int i = 0; i < 4; i++) {
                     Console.CursorLeft = 15;
                     Console.WriteLine("|           ");
                 }
+
                 HangBase();
             }
             else if (GetSituation() == 3) {
                 HangTop();
                 HangHead();
-                for (int i = 0; i < 5; i++) {
+                HangNeck();
+                HangLeftArm();
+                for (int i = 0; i < 2; i++) {
                     Console.CursorLeft = 15;
                     Console.WriteLine("|           ");
                 }
+
                 HangBase();
             }
             else if (GetSituation() == 4) {
                 HangTop();
                 HangHead();
                 HangNeck();
-                for (int i = 0; i < 4; i++) {
+                HangArms();
+                for (int i = 0; i < 2; i++) {
                     Console.CursorLeft = 15;
                     Console.WriteLine("|           ");
                 }
+
                 HangBase();
             }
             else if (GetSituation() == 5) {
                 HangTop();
                 HangHead();
                 HangNeck();
-                for (int i = 0; i < 4; i++) {
-                    Console.CursorLeft = 15;
-                    Console.WriteLine("|           ");
-                }
+                HangArms();
+                HangLeftLeg();
                 HangBase();
             }
             else if (GetSituation() == 6) {
                 HangTop();
                 HangHead();
                 HangNeck();
-                HangLeftArm();
-                for (int i = 0; i < 1; i++) {
-                    Console.CursorLeft = 15;
-                    Console.WriteLine("|           ");
-                }
+                HangArms();
+                HangLegs();
                 HangBase();
             }
             Console.CursorLeft = 15;
             Input.WordResults();
             Input.InputCheck();
         }
-
-        private static void HangLeftArm() {
-            Console.CursorLeft = 15;
-            Console.WriteLine("|        /|    ");
-            Console.CursorLeft = 15;
-            Console.WriteLine("|       / |    ");
-            Console.CursorLeft = 15;
-            Console.WriteLine("|      /  |    ");
-        }
-
-        private static void HangNeck() {
-            Console.CursorLeft = 15;
-            Console.WriteLine("|         |    ");
-        }
-
+        
         private static void HangTop() {
             Console.CursorLeft = 15;
             Console.WriteLine("____________");
@@ -197,7 +187,40 @@ namespace HangMan {
             Console.CursorLeft = 15;
             Console.WriteLine("|        \\__/  ");
         }
-
+        
+        private static void HangNeck() {
+            Console.CursorLeft = 15;
+            Console.WriteLine("|         |    ");
+        }
+        
+        private static void HangLeftArm() {
+            Console.CursorLeft = 15;
+            Console.WriteLine("|        /|    ");
+            Console.CursorLeft = 15;
+            Console.WriteLine("|       / |    ");
+        }
+        
+        private static void HangArms() {
+            Console.CursorLeft = 15;
+            Console.WriteLine("|        /|\\    ");
+            Console.CursorLeft = 15;
+            Console.WriteLine("|       / | \\   ");
+        }
+        
+        private static void HangLeftLeg() {
+            Console.CursorLeft = 15;
+            Console.WriteLine("|        /       ");
+            Console.CursorLeft = 15;
+            Console.WriteLine("|       /        ");
+        }
+        
+        private static void HangLegs() {
+            Console.CursorLeft = 15;
+            Console.WriteLine("|        / \\    ");
+            Console.CursorLeft = 15;
+            Console.WriteLine("|       /   \\   ");
+        }
+        
         private static void HangBase() {
             Console.CursorLeft = 15;
             Console.WriteLine("|\\         ");
