@@ -1,0 +1,6 @@
+/home/ethan/Documents/Hangman .NET version/Hangman .NET version/bin/Debug/Hangman_.NET_version.exe
+/home/ethan/Documents/Hangman .NET version/Hangman .NET version/bin/Debug/Hangman_.NET_version.pdb
+/home/ethan/Documents/Hangman .NET version/Hangman .NET version/obj/Debug/Hangman .NET version.csprojAssemblyReference.cache
+/home/ethan/Documents/Hangman .NET version/Hangman .NET version/obj/Debug/Hangman .NET version.csproj.CoreCompileInputs.cache
+/home/ethan/Documents/Hangman .NET version/Hangman .NET version/obj/Debug/Hangman_.NET_version.exe
+/home/ethan/Documents/Hangman .NET version/Hangman .NET version/obj/Debug/Hangman_.NET_version.pdb
